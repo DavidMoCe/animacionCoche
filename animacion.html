@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animacion</title>
+    <style>
+        body{
+            margin: 0;
+        }
+
+        /*Este div lo engloba todo por lo que tendra todo el tamano de la ventana*/
+        #Objeto{
+            position: fixed;/* proporciona un contexto de posicion para el div hijo.*/
+            width: 100vw;
+            height: 100vh;
+
+        }
+
+        /*Esta es la imagen del fondo, la cual tendra el tamno del div donde se encuentra*/
+        #paisaje{
+            width: 400%;
+            height: 100%;
+            
+            animation: moverPaisaje 10s infinite linear;
+        }
+
+
+        /*div donde se encuentra el coche y lo posicionamos abajo y luego lo transladamos en el eje Y un poco
+        esa proporcion va variando segun el tamano del div donde se encuentra*/
+        #ObjetoCoche{
+            position: absolute;
+            bottom: 0%;
+            transform: translate(0vw, -7.5vh);
+        }
+
+        /*Imagen del coche*/
+        #car{
+            width: 29.75vw;
+            /*width: 500px;*/
+            animation: acelerar 10s infinite linear;
+        }
+
+        /*imegenes de las ruedas*/
+        .rueda{
+            width: 4.75vw;
+            /*width: 80px;*/
+            animation: moverRueda 10s infinite linear;
+            
+        }
+
+        /*rueda 1*/
+        .rueda1{
+            translate: -8.3vw -0.5vh;
+            /*translate: -139px -2px;*/
+        }
+
+        /*rueda 2*/
+        .rueda2{
+            translate: -31.65vw -0.3vh;
+           /* translate: -531px -2px;*/
+        }
+
+        /*-----------------------   ANIMACIONES   ------------------------------------*/
+
+       @keyframes moverPaisaje {
+            from{
+                transform: translateX(-90vw);
+            }
+            to{
+                transform: translateX(-290vw);
+            }
+       }
+       
+       
+        /*keyframe que mueve la rueda en horizontal la gira sobre el eje X y la gira sobre el eje Y*/
+        @keyframes moverRueda {
+            from{
+                /* La unidad de medida vw en CSS significa "viewport width" 
+                (ancho del portapapeles o ventana de visualización). Un vw 
+                representa el 1% del ancho total de la ventana del navegador. 
+                Por lo tanto, 100vw es igual al 100% del ancho de la ventana del navegador.
+                Solo cuando carga la página o se reinicia el movimiento en este caso, es decir, no es dinamico.
+                La altura seria vh.
+                */
+
+                /*rotate es 760 para que haga el efecto de ir más rapido*/
+                transform: translateX(-50vw) scaleX(-1) rotate(760deg);
+            }
+            to{
+                transform: translateX(100vw) scaleX(-1) rotate(-760deg);
+            }
+        }
+
+
+        /*keyframe que mueve el coche horizontalmente, lo gira sobre el X0  y lo gira sobre el eje Y*/
+        @keyframes acelerar {
+            from {
+                /* La unidad de medida vw en CSS significa "viewport width" 
+                (ancho del portapapeles o ventana de visualización). Un vw 
+                representa el 1% del ancho total de la ventana del navegador. 
+                Por lo tanto, 100vw es igual al 100% del ancho de la ventana del navegador.
+                Solo cuando carga la página o se reinicia el movimiento en este caso, es decir, no es dinamico.
+                La altura seria vh.
+                */
+
+                transform: translateX(-50vw) scaleX(-1) rotate(-1deg);
+            }
+            to {
+                transform: translateX(100vw) scaleX(-1) rotate(-1deg);
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+    <div id="Objeto">
+        <img id="paisaje" src="./paisaje2.png">
+
+        <div id="ObjetoCoche">
+            <img id="car" src="https://static.vecteezy.com/system/resources/previews/001/193/920/non_2x/convertible-car-png.png">
+            <img class="rueda rueda1" src="https://png.pngtree.com/png-clipart/20211128/original/pngtree-tyre-sport-rim-02-png-image_6956080.png" alt="Rueda1">
+            <img class="rueda rueda2" src="https://png.pngtree.com/png-clipart/20211128/original/pngtree-tyre-sport-rim-02-png-image_6956080.png" alt="Rueda2">
+        </div>
+    </div>
+    
+</body>
+</html>
